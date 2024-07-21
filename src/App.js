@@ -39,13 +39,14 @@ const projects = [
 export default function PinnedProjects() {
   return (
     <div className="projects-wrapper">
-      <h2 className="projects-title">Pinlenmiş Projeler</h2>{projects
+      <h2 className="projects-title">Pinlenmiş Projeler</h2>
+      <ul className="projects-list">
+      {projects
         .filter((project) => {
           return project.isPinned;
         })
         .map((project,index) => {
           return (
-          <ul className="projects-list">
             <li className="project-list-item" key={index}>
               <div className={project.bgColor} key={project.initials}>
                 {project.initials}
@@ -65,9 +66,9 @@ export default function PinnedProjects() {
                   </button>
                 </div>
               </div>
-            </li>
-          </ul>
+            </li> 
         )})}
+        </ul>
     </div>
   );
 }
