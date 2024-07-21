@@ -7,7 +7,7 @@ const projects = [
     href: "#",
     members: 16,
     bgColor: "bg-pink-600",
-    isPinned: true
+    isPinned: true,
   },
   {
     name: "Component Design",
@@ -15,7 +15,7 @@ const projects = [
     href: "#",
     members: 12,
     bgColor: "bg-purple-600",
-    isPinned: true
+    isPinned: true,
   },
   {
     name: "Templates",
@@ -23,7 +23,7 @@ const projects = [
     href: "#",
     members: 16,
     bgColor: "bg-yellow-500",
-    isPinned: false
+    isPinned: false,
   },
   {
     name: "React Components",
@@ -31,8 +31,8 @@ const projects = [
     href: "#",
     members: 8,
     bgColor: "bg-green-500",
-    isPinned: true
-  }
+    isPinned: true,
+  },
 ];
 
 // Yalnızca pinli projeleri görüntülemek için filter ve map kullanın
@@ -40,24 +40,36 @@ export default function PinnedProjects() {
   return (
     <div className="projects-wrapper">
       <h2 className="projects-title">Pinlenmiş Projeler</h2>
-      <ul className="projects-list">
-        <li className="project-list-item">
-          <div className={` project-initials`}>AB</div>
-          <div className="project-content-wrapper">
-            <div className="project-content">
-              <a href="#" className="project-link">
-                İsim
-              </a>
-              <p className="project-members">0 Üye</p>
-            </div>
-            <div className="project-button-wrapper">
-              <button type="button" className="project-button">
-                <EllipsisVerticalIcon className="project-icon" />
-              </button>
-            </div>
-          </div>
-        </li>
-      </ul>
+
+      {projects
+        .filter((project) => {
+          return project.isPinned;
+        })
+        .map((project) => {
+          return (
+          <ul className="projects-list">
+            <li className="project-list-item">
+              <div className={project.bgColor}>
+                {project.initials}
+              </div>
+              <div className="project-content-wrapper">
+                <div className="project-content">
+                  <a href="#" className="project-link">
+                    {project.name}
+                  </a>
+                  <p className="project-members">
+                    {project.members} Üye
+                  </p>
+                </div>
+                <div className="project-button-wrapper">
+                  <button type="button" className="project-button">
+                    <EllipsisVerticalIcon className="project-icon" />
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        )})}
     </div>
   );
 }
