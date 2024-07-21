@@ -48,16 +48,16 @@ export default function PinnedProjects() {
         .map((project) => {
           return (
           <ul className="projects-list">
-            <li className="project-list-item" key={project.name}>
-              <div className={project.bgColor}>
+            <li className="project-list-item">
+              <div className={project.bgColor} key={project.initials}>
                 {project.initials}
               </div>
               <div className="project-content-wrapper">
                 <div className="project-content">
-                  <a href="#" className="project-link">
+                  <a href="#" className="project-link" key={project.name}>
                     {project.name}
                   </a>
-                  <p className="project-members">
+                  <p className="project-members" key={project.members}>
                     {project.members} Üye
                   </p>
                 </div>
